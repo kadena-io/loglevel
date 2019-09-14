@@ -29,6 +29,8 @@ data LogLevel
     = Quiet
     | Error
     | Warn
+    | Notice -- ^ Normal messages that are not too chatty
+    -- Levels above here should not be dropped
     | Info
     | Debug
     | Other T.Text
@@ -41,6 +43,7 @@ instance IsString LogLevel where
         "quiet" → Quiet
         "error" → Error
         "warn" → Warn
+        "notice" → Notice
         "info" → Info
         "debug" → Debug
         _ → Other (T.pack s)
